@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Magazine / Editorial Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* Premium, High-Contrast Palette */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  
+  --primary: 240 5.9% 10%; /* Deep black-ish */
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  
+  --accent: 31 100% 48%; /* Sophisticated Orange/Ochre */
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+
+  --radius: 0rem; /* Sharp, modern magazine edges */
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 31 100% 55%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    @apply font-black tracking-tight text-foreground uppercase;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Magazine Prose */
+.prose {
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-serif);
+  color: hsl(var(--foreground));
+  @apply tracking-tight uppercase border-b-2 border-foreground/5 pb-2 mt-12 mb-6;
+}
+
+.prose p {
+  line-height: 1.8;
+  margin-bottom: 2em;
+  font-size: 1.25rem;
+  color: hsl(var(--foreground) / 0.9);
+}
+
+.prose a {
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  border-bottom: 2px solid hsl(var(--accent));
+  transition: all 0.2s;
+}
+
+.prose a:hover {
+  background-color: hsl(var(--accent));
+  color: white;
+}
+
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-style: italic;
+  border-left: 8px solid hsl(var(--primary));
+  padding: 2rem;
+  background-color: transparent;
+  @apply my-12;
+}
+
+.prose img {
+  @apply rounded-none grayscale hover:grayscale-0 transition-all duration-700;
+}
